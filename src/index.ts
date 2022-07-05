@@ -38,15 +38,17 @@ export default class FTXclient {
         this.instance.interceptors.request.use( (config: any) => {
             const now = Date.now();
             const method = config.method.toUpperCase();
-            let { data, params } = config;
+            const { data, params } = config;
             
             let sign = now + method + `/api/${config.url}`;
 
             config.headers['FTX-TS'] = now;
 
-            params = new URLSearchParams(params).toString();
-
-            sign += method === 'GET' ? (params ? `?${params}` : ``) : `${JSON.stringify(data)}`
+            sign += method === 'GET' ? (
+                                        new URLSearchParams(params).toString()
+                                        ? `?${new URLSearchParams(params).toString()}` : ``
+                                        )
+                                    : `${JSON.stringify(data)}`
 
             config.headers['FTX-SIGN'] = hmacSHA256(sign, apiSecret).toString(Hex);
             return config;
@@ -194,7 +196,7 @@ export default class FTXclient {
         
         
         return Promise.all(promises)
-        .then( (r: Boolean[]) => {
+        .then( (r: boolean[]) => {
             if (r.indexOf(false) !== -1) {
                 return false;
             }

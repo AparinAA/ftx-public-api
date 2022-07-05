@@ -13,7 +13,7 @@ Start used lib
 
 ```
 import FTXclient from 'ftx-public-api';
-const ftxApi = new ftxclient(apiKey, apiSecret, apiPass);
+const ftxApi = new ftxclient(apiKey, apiSecret);
 ```
 
 ### Methods:
