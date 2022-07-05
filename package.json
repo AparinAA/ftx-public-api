@@ -2,7 +2,8 @@
   "name": "ftx-public-api",
   "version": "1.0.2",
   "description": "open api for connect to FTX",
-  "main": "index.js",
+  "main": "prod/index.js",
+  "types": "prod/index.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/*.ts\"",
@@ -19,6 +20,14 @@
     "api",
     "client"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AparinAA/ftx-public-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AparinAA/ftx-public-api.git/issues"
+  },
+  "homepage": "https://github.com/AparinAA/ftx-public-api.git#readme",
   "author": "x6p",
   "license": "MIT",
   "devDependencies": {
