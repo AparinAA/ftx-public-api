@@ -52,22 +52,13 @@ const ftxApi = new ftxclient(apiKey, apiSecret);
     return true/false/Error
 ```
 
-`ftxApi.transferCurrAcc(currency, amount, from, to)` - Transfer within account  
-**curryncy** - 'BTC'  
-**amount** - amount (+fee if to main + withdrawal)  
-**from**, **to** - code subaccount (*TradeAcc* - "18" *MainAcc* - "6")
-
-```
-    return true/false/Error
-```
-
-`ftxApi.withdrawalToAddress(currency, amount, method, address, tag)` - Withdrawal from FTX to address  
+`ftxApi.withdrawalToAddress(currency, amount, method, address, tag, password)` - Withdrawal from FTX to address  
 **currency** - 'BTC'  
 **amount** - 2  
 **method** - 'bsc' (for each currency his own)  
 **address** - address for withdrawal 
 **tag** - memo (for each currency his own)
-
+**password** - password for withdrawal (get on account)
 
 ```
     return true/false/Error
