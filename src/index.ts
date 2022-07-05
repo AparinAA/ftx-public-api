@@ -225,7 +225,7 @@ export default class FTXclient {
     method: string,
     address: string,
     tag: null | string = null,
-    password: string
+    password: string,
   ) {
     // body for withdrawal
     const bodyWithdrawal = {
