@@ -1,6 +1,6 @@
 {
   "name": "ftx-public-api",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "open api for connect to FTX",
   "main": "prod/index.js",
   "types": "prod/index.d.ts",
