@@ -6,8 +6,8 @@ declare global {
     namespace NodeJS {
         interface ProcessEnv {
             api_key: string;
-            passphrase: string;
             secret_key: string;
+            password: string;
             ENV: 'test' | 'dev' | 'prod';
         }
     }
@@ -16,9 +16,10 @@ declare global {
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 // Init secret api OKX
-const secretDictOKX = {
-    'api_key': process.env.api_key,
-    'secret_key': process.env.secret_key,
+const secretDictFTX = {
+    'apiKey': process.env.api_key,
+    'secretKey': process.env.secret_key,
+    'password': process.env.passwordWithdrawal
 };
 
 function check (ex: any) {
@@ -26,5 +27,5 @@ function check (ex: any) {
 } 
 
 test('Check connect API to FTX', async () => {
-    expect(await check(new FTXclient(secretDictOKX.api_key, secretDictOKX.secret_key))).toBe("FTX");
+    expect(await check(new FTXclient(secretDictFTX.apiKey, secretDictFTX.secretKey))).toBe("FTX");
 })

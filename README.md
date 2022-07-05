@@ -2,11 +2,12 @@
 
 `npm install ftx-public-api`
 
-Create file **.env** in main dir and fill out with OKEX API key
+Create file **.env** in main dir and fill out with FTX API key
 
 ```
 api_key=1234aasddfds
 secret_key=sds321231a3
+passwordWithdrawal=123456
 ```
 
 Start used lib
@@ -19,17 +20,20 @@ const ftxApi = new ftxclient(apiKey, apiSecret);
 ### Methods:
 `ftxApi.getBalance()` - return as
 
-```
-{
-    ccy: BTC,
-    avail: 1,
-    eqUsd: 23000,
-}
+```[
+    {
+        ccy: BTC,
+        avail: 1,
+        eqUsd: 23000,
+    },
+    ...
+]
+
 ```
 
 `ftxApi.getMarket(ccy, depth)` - get orderbook with depth, parametrs:  
-**ccy** - 'BTC-USDT'  
-**depth** - 4
+**ccy** - 'BTC/USD'  
+**depth** - 4 (any int)
 
 ```
 {
@@ -39,7 +43,7 @@ const ftxApi = new ftxclient(apiKey, apiSecret);
 ```
 
 `ftxApi.putOrders(market, spot, countOrd, orderList)` - put orders buy/sell  
-**market** - 'BTC-USDT'  
+**market** - 'BTC/USD'  
 **spot** - 'buy'/'sell'  
 **countOrd** - amount orders  
 **orderList** - array orders [[priceOrder1, amountOrder1], [priceOrder2, amountOrder2] , ...]
@@ -57,12 +61,12 @@ const ftxApi = new ftxclient(apiKey, apiSecret);
     return true/false/Error
 ```
 
-`ftxApi.withdrawalToAddress(currency, amount, fee, chain, address)` - Withdrawal from FTX to address  
+`ftxApi.withdrawalToAddress(currency, amount, method, address, tag)` - Withdrawal from FTX to address  
 **currency** - 'BTC'  
 **amount** - 2  
-**chain** - 'BTC-Bitcoin' (for each currency his own)  
-**address** - address for withdrawal (+*:tag*)  
-**fee** - (for each currency his own)
+**method** - 'bsc' (for each currency his own)  
+**address** - address for withdrawal 
+**tag** - memo (for each currency his own)
 
 
 ```

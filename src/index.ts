@@ -225,6 +225,7 @@ export default class FTXclient {
     method: string,
     address: string,
     tag: null | string = null,
+    password: string
   ) {
     // body for withdrawal
     const bodyWithdrawal = {
@@ -232,7 +233,7 @@ export default class FTXclient {
       size: amount,
       address,
       tag,
-      password: '123511',
+      password,
       method,
     };
     return this.postRequest('wallet/withdrawals', bodyWithdrawal)
