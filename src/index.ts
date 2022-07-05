@@ -178,7 +178,7 @@ export default class FTXclient {
     orderList.forEach((item: [number, number], i: number) => {
       if (i < countOrd) {
         const ord = {
-          market: market,
+          market,
           side: spot,
           price: item[0],
           type: 'limit',
